@@ -18,11 +18,14 @@ function Home() {
 	const { signOut } = useSignOut()
 
 	return (
-		<div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+		<div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
+			<header></header>
 			<main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
 				<Link href={google}>Sign in with Google</Link>
-				<button onClick={signOut}>Sign out</button>
-				<SignedIn>You are signed in</SignedIn>
+				<SignedIn>
+					You are signed in
+					<button onClick={signOut}>Sign out</button>
+				</SignedIn>
 			</main>
 			<footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer>
 		</div>
