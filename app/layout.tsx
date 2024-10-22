@@ -15,7 +15,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
 	return (
 		<html lang="en">
-			<body className={`${azeret.className} antialiased`}>{children}</body>
+			<body
+				className={`${azeret.className} grid min-h-screen antialiased`}>
+				{children}
+			</body>
 		</html>
 	)
 }
