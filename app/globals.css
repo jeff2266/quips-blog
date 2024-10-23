@@ -6,32 +6,37 @@
 	--color-background: #c0eeff;
 	--color-foreground: #110720;
 	--color-foreground-hover: #8868b8;
-}
 
-@media (prefers-color-scheme: dark) {
-	:root {
+	@media (prefers-color-scheme: dark) {
 		--color-background: #110720;
 		--color-foreground: #c0eeff;
 		--color-foreground-hover: #50b3e3;
 	}
+
+	font-size: 14px;
+
+	@screen md {
+		font-size: 16px;
+	}
 }
 
-body {
-	color: var(--color-foreground);
-	background: var(--color-background);
-	font-family: Arial, Helvetica, sans-serif;
-}
+@layer base {
 
-h1, h2 {
-	font-weight: 700;
-}
+	a,
+	button {
+		@apply italic;
+	}
 
-a, button {
-	font-style: italic;
-}
+	a:hover,
+	button:hover {
+		@apply text-[var(--color-foreground-hover)]
+	}
 
-a:hover, button:hover {
-	color: var(--color-foreground-hover)
+	body {
+		@apply text-foreground;
+		@apply bg-background;
+		@apply font-sans
+	}
 }
 
 @layer utilities {
