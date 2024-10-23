@@ -5,12 +5,16 @@
 :root {
 	--color-background: #c0eeff;
 	--color-foreground: #110720;
-	--color-foreground-hover: #8868b8;
+	--color-accent: #2d2441;
+	--color-hover: #8868b8;
+	--color-disabled: #77707a;
 
 	@media (prefers-color-scheme: dark) {
 		--color-background: #110720;
 		--color-foreground: #c0eeff;
-		--color-foreground-hover: #50b3e3;
+		--color-accent: #77cbec;
+		--color-hover: #50b3e3;
+		--color-disabled: #466b80;
 	}
 
 	font-size: 14px;
@@ -29,7 +33,23 @@
 
 	a:hover,
 	button:hover {
-		@apply text-[var(--color-foreground-hover)]
+		@apply text-hover;
+	}
+
+	*:focus,
+	*::before:focus,
+	*::after:focus {
+		@apply text-background;
+		@apply bg-foreground;
+		@apply outline-none;
+		@apply border-none;
+	}
+
+	input {
+		@apply text-accent;
+		@apply bg-background;
+		@apply placeholder:text-disabled;
+		@apply placeholder:italic;
 	}
 
 	body {

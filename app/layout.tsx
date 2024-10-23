@@ -1,6 +1,7 @@
+import './globals.css'
+import QuipsNhostProvider from '@/components/quipsNhostProvider'
 import type { Metadata } from 'next'
 import { Azeret_Mono } from 'next/font/google'
-import './globals.css'
 
 const azeret = Azeret_Mono({
 	subsets: ['latin'],
@@ -15,9 +16,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
 	return (
 		<html lang="en">
-			<body className={`${azeret.className} grid min-h-screen antialiased`}>
-				{children}
-			</body>
+			<QuipsNhostProvider>
+				<body className='place-items-center'>
+					<div className={`${azeret.className} grid min-h-screen w-full min-w-max max-w-screen-lg p-2 md:p-8 antialiased`}>{children}</div>
+				</body>
+			</QuipsNhostProvider>
 		</html>
 	)
 }

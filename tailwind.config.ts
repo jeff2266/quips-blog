@@ -9,7 +9,10 @@ const config: Config = {
 		extend: {
 			colors: {
 				background: 'var(--color-background)',
-				foreground: 'var(--color-foreground)'
+				foreground: 'var(--color-foreground)',
+				accent: 'var(--color-accent)',
+				hover: 'var(--color-hover)',
+				disabled: 'var(--color-disabled)',
 			}
 		}
 	},
