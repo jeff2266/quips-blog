@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { SignedIn, SignedOut, useProviderLink, useSignOut, useUserData } from '@nhost/nextjs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
-import AnimateText from '@/components/animateText'
 
 export default function Header() {
 	const { google } = useProviderLink()
