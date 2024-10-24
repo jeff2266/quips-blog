@@ -1,3 +1,4 @@
+import '@fortawesome/fontawesome-svg-core/styles.css'
 import './globals.css'
 import QuipsNhostProvider from '@/components/quipsNhostProvider'
 import type { Metadata } from 'next'

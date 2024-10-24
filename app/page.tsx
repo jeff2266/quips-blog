@@ -9,9 +9,9 @@ export default function App() {
 		<div className='flex flex-col min-h-full gap-2'>
 			<Header />
 			<main className="flex flex-col flex-grow gap-2">
-				<button className="flex min-w-full gap-2 justify-center items-center">
+				<button className="flex gap-2 justify-center items-center px-2">
 					<div>Play</div>
-					<FontAwesomeIcon icon={faPlay} />
+					<FontAwesomeIcon icon={faPlay} className='' />
 				</button>
 				<Search />
 				<section>
