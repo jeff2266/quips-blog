@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-	--color-background: #c0eeff;
+	--color-background: #cfefff;
 	--color-foreground: #110720;
 	--color-accent: #2d2441;
 	--color-hover: #8868b8;
@@ -32,8 +32,10 @@
 	}
 
 	a:hover,
-	button:hover {
-		@apply text-hover;
+	button:hover,
+	input:hover {
+		@apply outline;
+		@apply outline-accent;
 	}
 
 	*:focus,

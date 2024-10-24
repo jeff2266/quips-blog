@@ -3,8 +3,16 @@ import type { Config } from 'tailwindcss'
 const config: Config = {
 	content: ['./pages/**/*.{js,ts,jsx,tsx,mdx}', './components/**/*.{js,ts,jsx,tsx,mdx}', './app/**/*.{js,ts,jsx,tsx,mdx}'],
 	theme: {
-		borderColor: ({ colors }) => ({
-			DEFAULT: 'var(--color-foreground)'
+		borderColor: ({ theme }) => ({
+			DEFAULT: 'var(--color-foreground)',
+			...theme('colors')
+		}),
+		borderWidth: ({ theme }) => ({
+			DEFAULT: '0.7px',
+			...theme('spacing')
+		}),
+		outlineWidth: ({}) => ({
+			DEFAULT: '0.7px'
 		}),
 		extend: {
 			colors: {
@@ -12,7 +20,7 @@ const config: Config = {
 				foreground: 'var(--color-foreground)',
 				accent: 'var(--color-accent)',
 				hover: 'var(--color-hover)',
-				disabled: 'var(--color-disabled)',
+				disabled: 'var(--color-disabled)'
 			}
 		}
 	},
