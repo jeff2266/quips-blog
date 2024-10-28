@@ -1,46 +1,22 @@
-'use client'
-
-import { useNhostClient } from '@nhost/nextjs'
-import { useCallback, useEffect, useState } from 'react'
-
-const qGetPrompts = `
-    query {
-        prompt {
-            id
-            prompt
-            user {
-                displayName
-            }
-            created
-        }
-    }
-`
-
-export default function PostThumb() {
-	const nhostClient = useNhostClient()
-	const [prompts, setPrompts] = useState<any>(null)
-	const getPromptsCallback = useCallback<() => Promise<void>>(async () => {
-		const data = await nhostClient.graphql.request(qGetPrompts)
-        console.log(data)
-		setPrompts(data)
-	}, [])
-
-	useEffect(() => {
-		getPromptsCallback().catch(e => console.error(e))
-	}, [getPromptsCallback])
-
+export default function PostThumb({
+	key,
+	prompt,
+	author,
+	created
+}: {
+	key: string
+	prompt: string
+	author: string
+	created: string
+}) {
 	return (
-		<div className="border">
-			{prompts?.data?.prompt?.map((p: any) => (
-				<div key={p?.id}>
-					<h3 className="text-lg">{p?.prompt}</h3>
-					<div className="flex">
-						<div className="text-xs">Likes</div>
-						<div className="text-xs">{p?.user?.displayName}</div>
-						<div className="text-xs">{p?.created}</div>
-					</div>
-				</div>
-			))}
+		<div className="border p-2" key={key}>
+			<h3 className="text-lg">{prompt}</h3>
+			<div className="flex justify-between gap-1 sm:gap-2">
+				<div className="flex-grow text-xs">Likes</div>
+				<div className="text-xs">{author}</div>
+				<div className="text-xs">{created}</div>
+			</div>
 		</div>
 	)
 }

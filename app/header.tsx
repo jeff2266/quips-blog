@@ -11,7 +11,7 @@ export default function Header() {
 
 	return (
 		<header className="flex justify-between items-center">
-			<h1 className="text-2xl font-bold">Quips</h1>
+			<h1 className="text-2xl font-bold p-2 sm:p-4">Quips</h1>
 			<Link href="/auth" className="grid aspect-square w-8 place-content-stretch">
 				<div className="grid overflow-hidden rounded-full p-0.5 aspect-square place-content-stretch">
 					{userData ? (
