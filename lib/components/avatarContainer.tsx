@@ -1,11 +1,10 @@
 'use client'
 
-import { Suspense, use } from 'react'
+import { Suspense } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { useSuspenseQuery } from '@tanstack/react-query'
-import { supabaseGroupOptions } from '@/lib/components/reactQueryProvider'
-import { SupabaseContext } from '@/lib/components/supabaseProvider'
+import { supabaseGroupOptions } from '@/lib/components/supabaseQueryProvider'
 import Link from 'next/link'
 import SpinLoader from '@/lib/components/spinLoader'
 import * as Avatar from '@radix-ui/react-avatar'
@@ -13,7 +12,7 @@ import * as Avatar from '@radix-ui/react-avatar'
 export default function AvatarContainer() {
 
 	return (
-		<Link href="/auth" className="grid aspect-square w-8 place-content-stretch">
+		<Link href="/profile" className="grid aspect-square w-8 place-content-stretch">
 			<div className="grid overflow-hidden rounded-full p-0.5 aspect-square place-content-stretch text-center">
 				<Suspense fallback={<AvatarSkeleton />}>
 					<AvatarResolved />
@@ -28,12 +27,11 @@ function AvatarSkeleton() {
 }
 
 function AvatarResolved() {
-	const supabase = { client: use(SupabaseContext), key: 'session'}
 	const {
 		data: {
 			data: { session }
 		}
-	} = useSuspenseQuery(supabaseGroupOptions(supabase))
+	} = useSuspenseQuery(supabaseGroupOptions('session'))
 
 	return (
 		<>

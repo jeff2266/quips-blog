@@ -43,8 +43,6 @@
 	*::after:focus {
 		@apply text-background;
 		@apply bg-foreground;
-		@apply outline-none;
-		@apply border-none;
 	}
 
 	input {
