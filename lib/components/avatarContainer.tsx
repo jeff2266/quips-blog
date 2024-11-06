@@ -3,17 +3,20 @@
 import { Suspense, use } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
-import { ResolveSession } from '../definitions/supabase'
+import { useSuspenseQuery } from '@tanstack/react-query'
+import { supabaseGroupOptions } from '@/lib/components/reactQueryProvider'
+import { SupabaseContext } from '@/lib/components/supabaseProvider'
 import Link from 'next/link'
+import SpinLoader from '@/lib/components/spinLoader'
 import * as Avatar from '@radix-ui/react-avatar'
-import SpinLoader from './spinLoader'
 
-export default function AvatarContainer({ resolveSession }: { resolveSession: ResolveSession }) {
+export default function AvatarContainer() {
+
 	return (
 		<Link href="/auth" className="grid aspect-square w-8 place-content-stretch">
 			<div className="grid overflow-hidden rounded-full p-0.5 aspect-square place-content-stretch text-center">
 				<Suspense fallback={<AvatarSkeleton />}>
-					<AvatarResolved resolveSession={resolveSession} />
+					<AvatarResolved />
 				</Suspense>
 			</div>
 		</Link>
@@ -21,13 +24,16 @@ export default function AvatarContainer({ resolveSession }: { resolveSession: Re
 }
 
 function AvatarSkeleton() {
-	return <SpinLoader speed={500}/>
+	return <SpinLoader speed={500} />
 }
 
-function AvatarResolved({ resolveSession }: { resolveSession: ResolveSession }) {
+function AvatarResolved() {
+	const supabase = { client: use(SupabaseContext), key: 'session'}
 	const {
-		data: { session }
-	} = use(resolveSession)
+		data: {
+			data: { session }
+		}
+	} = useSuspenseQuery(supabaseGroupOptions(supabase))
 
 	return (
 		<>

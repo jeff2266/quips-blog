@@ -4,7 +4,7 @@ import Header from './header'
 import Search from './search'
 import PostThumbs from '@/lib/components/postThumbs'
 
-export default function App() {
+export default function Page() {
 	return (
 		<div className="flex flex-col min-h-full gap-2">
 			<Header />
